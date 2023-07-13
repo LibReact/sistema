@@ -11,6 +11,8 @@ export default function ProjectForm({ handleSubmit, btnText, projectData }) {
     const [categories, setCategories] = useState([]);
     const [project, setProject] = useState(projectData || {})
 
+    // useEffect dentro do componente nos permite acessar a variável de estado de contagem (ou quaisquer props) diretamente do efeito. 
+    // useEffect - diz ao React que seu componente precisa fazer algo após a renderização.
     useEffect(() => {
         // 2º Faz um request na API
         fetch("http://localhost:5000/categories", {
@@ -27,15 +29,18 @@ export default function ProjectForm({ handleSubmit, btnText, projectData }) {
             .catch((err) => console.log(err))
     }, []);
 
+    // Evento do submit do form
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(project)
     }
 
+    // Evento do input - pega o que é inserido nele.
     function handleChange(e) {
         setProject({ ...project, [e.target.name]: e.target.value })
     }
 
+    // Evento do select - pega as categorias
     function handleCategory(e) {
         setProject({
             ...project,

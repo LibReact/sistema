@@ -10,6 +10,7 @@ export default function Home() {
             <p>Comece a gerenciar os seus projetos agora mesmo!</p>
             <LinkButton to="/newproject" text="Criar Projeto" />
             <img src={savings} alt="Costs" />
+
         </section>
     )
 }
