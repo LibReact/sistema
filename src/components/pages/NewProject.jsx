@@ -4,7 +4,7 @@ import styles from './NewProject.module.css'
 
 export default function NewProject() {
 
-    const history = useNavigate() // permite fazer redirecionar para algum página
+    const navigate = useNavigate() // permite fazer redirecionar para algum página
 
     function createPost(project) {
 
@@ -20,10 +20,9 @@ export default function NewProject() {
             body: JSON.stringify(project),
         }).then((resp) => resp.json())
             .then((data) => {
-                console.log(data)
+                //console.log(data)
                 // redirect
-                history.push('/projects', { message: 'Projeto criado com sucesso!' })
-                //navigate('/projects')
+                navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
             })
             .catch(err => console.log(err))
     }
