@@ -43,6 +43,28 @@
       "cost": 0,
       "services": [],
       "id": 4
+    },
+    {
+      "name": "teste",
+      "budget": "2222",
+      "category": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 5
+    },
+    {
+      "name": "ooooo",
+      "budget": "5657575",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 6
     }
   ],
   "categories": [

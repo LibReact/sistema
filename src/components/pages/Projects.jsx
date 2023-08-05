@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom"
 import Container from "../layout/Container"
+import Loading from "../layout/Loading"
 import LinkButton from "../layout/LinkButton"
 import Message from "../layout/Message"
 import ProjectCard from "../project/ProjectCard"
@@ -9,6 +10,7 @@ import { useState, useEffect } from 'react';
 export default function Projects() {
 
     const [projects, setProjects] = useState([])
+    const [removeLoading, setRemoveLoading] = useState(false)
 
     const location = useLocation() // Hook para conseguir acessar o history do componente NewProject
     let message = ''
@@ -18,18 +20,21 @@ export default function Projects() {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/projects', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // A resposta do GET é convertida para JSON
-        }).then((resp) => resp.json())
-            .then((data) => {
-                console.log(data);
-                // Seta os projetos em json no array vazio do useState.
-                setProjects(data);
-            }).catch((err) => console.log(err))
+        setTimeout(() => {
+            fetch('http://localhost:5000/projects', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // A resposta do GET é convertida para JSON
+            }).then((resp) => resp.json())
+                .then((data) => {
+                    console.log(data);
+                    setRemoveLoading(true);
+                    // Seta os projetos em json no array vazio do useState.
+                    setProjects(data);
+                }).catch((err) => console.log(err))
+        }, 3000)
     }, [])
 
     return (
@@ -43,6 +48,10 @@ export default function Projects() {
                 {projects.length > 0 && projects.map((project) => (
                     <ProjectCard id={project.id} name={project.name} budget={project.budget} category={project.category.name} key={project.id} />
                 ))}
+                {!removeLoading && <Loading />}
+                {removeLoading && projects.length === 0 && (
+                    <p>Não há projetos cadastrados!</p>
+                )}
             </Container>
         </div>
     )
