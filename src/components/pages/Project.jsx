@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Loading from '../layout/Loading'
 import Container from '../layout/Container'
+import Message from '../layout/Message'
+import ProjectForm from '../project/ProjectForm'
 
 export default function Project() {
 
     const { id } = useParams() // pega o ID do projeto pela URL
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
+    const [message, setMessage] = useState()
+    const [type, setType] = useState()
 
 
     useEffect(() => {
@@ -27,6 +31,37 @@ export default function Project() {
         }, 3000)
     }, [id])
 
+
+    function editPost(project) {
+        // budget validation
+        if (project.budget < project.cost) {
+            // menssage
+            setMessage('O orçamento nao pode ser menor que o custo do projeto!')
+            setType('error')
+            return false // stop a função para não atualizar o projeto.
+        }
+
+        fetch(`http://localhost:5000/projects/${project.id}`, {
+            method: 'PATCH', // altera apenas 1 dado ja existente na base.
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // mandando o projeto como texto ja que queremos atualizar o projeto.
+            body: JSON.stringify(project),
+
+        }) // recebe uma resposta da requisição e transforma em json.
+            .then(resp => resp.json())
+            // dados em json para alterarmos
+            .then((data) => {
+
+                setProject(data);
+                setShowProjectForm(false) // esconde o form depois que termina a edição.
+                setMessage('Projeto Atualizado!')
+                setType('success')
+
+            }).catch(err => console.log(err))
+    }
+
     function toggleProjectForm() {
         setShowProjectForm(!showProjectForm)
     }
@@ -37,6 +72,7 @@ export default function Project() {
             {project.name ? (
                 <div className={styles.project_details}>
                     <Container customClass="column">
+                        {message && <Message type={type} msg={message} />}
                         <div className={styles.details_container}>
                             <h1>Projeto: {project.name}</h1>
                             <button className={styles.btn} onClick={toggleProjectForm}>{!showProjectForm ? 'Editar Projeto' : 'Fechar'}</button>
@@ -48,7 +84,7 @@ export default function Project() {
                                 </div>
                             ) : (
                                 <div className={styles.project_info}>
-                                    <p>Form</p>
+                                    <ProjectForm handleSubmit={editPost} btnText="Concluir edição" projectData={project} />
                                 </div>
                             )}
                         </div>

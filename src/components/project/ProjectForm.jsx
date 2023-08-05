@@ -5,6 +5,7 @@ import Select from '../form/Select'
 import SubmitButton from '../form/Submit'
 import styles from './ProjectForm.module.css'
 
+// function do component form: passsa o submit, texto de cada botao e os dados
 export default function ProjectForm({ handleSubmit, btnText, projectData }) {
 
     // 1º Cria um array vazio no hook
