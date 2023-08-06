@@ -1,3 +1,4 @@
+import { parse, v4 as uuidv4 } from 'uuid' // cria um ID unico e serve para renderizar as listas no react
 import styles from './Project.module.css'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -5,6 +6,7 @@ import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import Message from '../layout/Message'
 import ProjectForm from '../project/ProjectForm'
+import ServiceForm from '../service/ServiceForm'
 
 export default function Project() {
 
@@ -12,6 +14,7 @@ export default function Project() {
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
+    const [services, setServices] = useState([])
     const [message, setMessage] = useState()
     const [type, setType] = useState()
 
@@ -31,6 +34,7 @@ export default function Project() {
 
         }, 3000)
     }, [id])
+
 
 
     function editPost(project) {
@@ -64,6 +68,48 @@ export default function Project() {
                 setType('success')
 
             }).catch(err => console.log(err))
+    }
+
+    // cria o serviço
+    function createService(project) {
+        setMessage('')
+
+        // pega o ultimo serviço
+        const lastService = project.services[project.services.length - 1]
+
+        lastService.id = uuidv4()
+
+        const lastServiceCost = lastService.cost
+
+        // novo custo     custo atual do projeto + ultimo custo do servico
+        const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
+        // maximum value validation
+        if (newCost > parseFloat(project.budget)) {
+            setMessage('Orçamento ultrapassado, verifique o valor do serviço')
+            setType('error')
+            project.services.pop()
+            return false
+        }
+
+        // add service cost to project total cost
+        project.cost = newCost
+
+        // update project
+        fetch(`http://localhost:5000/projects/${project.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Envia o body para os dados serem atualizados
+            body: JSON.stringify(project),
+
+        }).then((resp) => resp.json())
+            .then((data) => {
+                // exibir os servicos
+                console.log(data + 'aqui')
+            })
+            .catch((err) => console.log(err))
     }
 
     function toggleProjectForm() {
@@ -100,7 +146,9 @@ export default function Project() {
                             <h2>Adicione um serviço:</h2>
                             <button className={styles.btn} onClick={toggleServiceForm}>{!showServiceForm ? 'Adicionar Serviço' : 'Fechar'}</button>
                             <div className={styles.project_info}>
-                                {showServiceForm && <div>formulario do serviço</div>}
+                                {showServiceForm && (
+                                    <ServiceForm handleSubmit={createService} btnText="Adicionar Serviço" projectData={project} />
+                                )}
                             </div>
                         </div>
                         <h2>Serviços</h2>

@@ -7,8 +7,45 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": null,
+      "services": [
+        {
+          "id": "9ca80982-37d7-4321-a337-21e14a3db7d5"
+        },
+        {
+          "id": "fea6bf6d-cf91-4c88-be5d-b2136f0e7c2e"
+        },
+        {
+          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
+        },
+        {
+          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
+        },
+        {
+          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
+        },
+        {
+          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
+        },
+        {
+          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
+        },
+        {
+          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
+        },
+        {
+          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
+        },
+        {
+          "id": "a483cd48-9577-4ae9-8e4a-2079271a0048"
+        },
+        {
+          "id": "37fe3a61-e42b-471d-a014-571d9f7bec78"
+        },
+        {
+          "id": "1cd5e13a-a5fe-467f-abc5-a43a3544342e"
+        }
+      ],
       "id": 1
     },
     {
