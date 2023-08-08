@@ -10,6 +10,7 @@ export default function ServiceCard({ id, name, cost, description, handleRemove 
 
     return (
         <div className={styles.project_card}>
+            <small className={styles.project_hash}>hash: {id}</small>
             <h4>{name}</h4>
             <p>
                 <span>Custo total:</span> R$ {cost}

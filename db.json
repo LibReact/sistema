@@ -2,26 +2,13 @@
   "projects": [
     {
       "name": "Portal de notícias",
-      "budget": "10000",
+      "budget": "20000",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 610,
-      "services": [
-        {
-          "name": "Manutenção do portal",
-          "cost": "100",
-          "description": "disparo de email",
-          "id": "60c8f9c2-519b-4cd8-82c6-fc1558f3398b"
-        },
-        {
-          "name": "Programador PHP",
-          "cost": "500",
-          "description": "Disparar emails para os clientes do portal",
-          "id": "20d026a4-1ec9-4b95-8746-5cecfcc52cd0"
-        }
-      ],
+      "cost": 0,
+      "services": [],
       "id": 1
     },
     {
@@ -31,33 +18,8 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 31000,
-      "services": [
-        {
-          "name": "Programador Full Stack",
-          "cost": "1000",
-          "description": "Fazer deploy na Apple Store",
-          "id": "12726743-8793-4512-87d1-b63235bbf9b8"
-        },
-        {
-          "name": "Designer",
-          "cost": "2500",
-          "description": "Criação de layout",
-          "id": "74a3f3b0-c9df-4c62-8182-654f6ec98b37"
-        },
-        {
-          "name": "Gerente de projetos",
-          "cost": "26500",
-          "description": "Gerenciar squad",
-          "id": "c40c3214-bf32-4234-8255-797162477d49"
-        },
-        {
-          "name": "teste",
-          "cost": "1000",
-          "description": "teste",
-          "id": "0c260bef-04ab-4ba9-853a-52cade86ee1c"
-        }
-      ],
+      "cost": 0,
+      "services": [],
       "id": 2
     },
     {
