@@ -23,7 +23,7 @@ export default function Project() {
     useEffect(() => {
         setTimeout(() => {
 
-            fetch(`http://localhost:5000/projects/${id}`, {
+            fetch(`https://jsonapi-nu.vercel.app/projects/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export default function Project() {
             return false // stop a função para não atualizar o projeto.
         }
 
-        fetch(`http://localhost:5000/projects/${project.id}`, {
+        fetch(`https://jsonapi-nu.vercel.app/projects/${project.id}`, {
             method: 'PATCH', // altera apenas 1 dado ja existente na base.
             headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default function Project() {
         project.cost = newCost
 
         // update project
-        fetch(`http://localhost:5000/projects/${project.id}`, {
+        fetch(`https://jsonapi-nu.vercel.app/projects/${project.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ export default function Project() {
         projectUpdated.services = servicesUpdated
         projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
 
-        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+        fetch(`https://jsonapi-nu.vercel.app/projects/${projectUpdated.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

@@ -22,7 +22,7 @@ export default function Projects() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/projects', {
+            fetch('https://jsonapi-nu.vercel.app/projects', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function Projects() {
 
     function removeProject(id) {
 
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`https://jsonapi-nu.vercel.app/projects/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

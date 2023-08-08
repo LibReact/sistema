@@ -16,7 +16,7 @@ export default function Footer() {
                     <FaLinkedin />
                 </li>
             </ul>
-            <p className={styles.copy_right}><span>Costs</span> &copy; 2021</p>
+            <p className={styles.copy_right}><span>Costs</span> &copy; 2023 made by <a href="https://www.linkedin.com/in/bruno-lima-b6a034177/" className={styles.linkedin} target="_blank" title="Linkedin">Bruno Lima</a></p>
         </footer>
     )
 }
