@@ -7,14 +7,15 @@ import Container from '../layout/Container'
 import Message from '../layout/Message'
 import ProjectForm from '../project/ProjectForm'
 import ServiceForm from '../service/ServiceForm'
+import ServiceCard from '../service/ServiceCard'
 
 export default function Project() {
 
     const { id } = useParams() // pega o ID do projeto pela URL
     const [project, setProject] = useState([])
+    const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
-    const [services, setServices] = useState([])
     const [message, setMessage] = useState()
     const [type, setType] = useState()
 
@@ -27,10 +28,11 @@ export default function Project() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            }).then(resp => resp.json())
+            }).then((resp) => resp.json())
                 .then((data) => {
                     setProject(data)
-                }).catch(err => console.log(err))
+                    setServices(data.services)
+                }).catch((err) => console.log(err))
 
         }, 3000)
     }, [id])
@@ -38,12 +40,11 @@ export default function Project() {
 
 
     function editPost(project) {
-        setMessage('')
 
 
         // budget validation
         if (project.budget < project.cost) {
-            // menssage
+
             setMessage('O orçamento nao pode ser menor que o custo do projeto!')
             setType('error')
             return false // stop a função para não atualizar o projeto.
@@ -58,7 +59,7 @@ export default function Project() {
             body: JSON.stringify(project),
 
         }) // recebe uma resposta da requisição e transforma em json.
-            .then(resp => resp.json())
+            .then((resp) => resp.json())
             // dados em json para alterarmos
             .then((data) => {
 
@@ -67,7 +68,7 @@ export default function Project() {
                 setMessage('Projeto Atualizado!')
                 setType('success')
 
-            }).catch(err => console.log(err))
+            }).catch((err) => console.log(err))
     }
 
     // cria o serviço
@@ -77,12 +78,15 @@ export default function Project() {
         // pega o ultimo serviço
         const lastService = project.services[project.services.length - 1]
 
-        lastService.id = uuidv4()
+        lastService.id = uuidv4() // gera um id unico para o serviço
 
-        const lastServiceCost = lastService.cost
+        const lastServiceCost = lastService.cost // custo do serviço
 
-        // novo custo     custo atual do projeto + ultimo custo do servico
+        // novo custo     custo atual do projeto 0 + ultimo custo do servico
         const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
+        //console.log(newCost); // 20 type number
+        //console.log(project.budget); // 10000 type string
 
         // maximum value validation
         if (newCost > parseFloat(project.budget)) {
@@ -92,6 +96,7 @@ export default function Project() {
             return false
         }
 
+        // se o newCost não for maior que o budget do projeto, entao o cost do projeto é atualizado.
         // add service cost to project total cost
         project.cost = newCost
 
@@ -107,9 +112,13 @@ export default function Project() {
         }).then((resp) => resp.json())
             .then((data) => {
                 // exibir os servicos
-                console.log(data + 'aqui')
+                setShowServiceForm(false)
             })
             .catch((err) => console.log(err))
+    }
+
+    function removeService() {
+
     }
 
     function toggleProjectForm() {
@@ -153,7 +162,20 @@ export default function Project() {
                         </div>
                         <h2>Serviços</h2>
                         <Container customClass="start">
-                            <p>Itens de serviços</p>
+                            {services.length > 0 &&
+                                services.map((service) => (
+
+                                    <ServiceCard
+                                        id={service.id}
+                                        name={service.name}
+                                        cost={service.cost}
+                                        description={service.description}
+                                        key={service.id}
+                                        handleRemove={removeService}
+                                    />
+                                ))
+                            }
+                            {services.length === 0 && <p>Não há serviços cadastrados.</p>}
                         </Container>
                     </Container>
                 </div>

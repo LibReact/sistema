@@ -1,67 +1,68 @@
 {
   "projects": [
     {
-      "name": "Iate Clube de Fortaleza",
-      "budget": "5.000",
+      "name": "Portal de notícias",
+      "budget": "10000",
       "category": {
-        "id": "4",
-        "name": "Planejamento"
+        "id": "2",
+        "name": "Desenvolvimento"
       },
-      "cost": null,
+      "cost": 610,
       "services": [
         {
-          "id": "9ca80982-37d7-4321-a337-21e14a3db7d5"
+          "name": "Manutenção do portal",
+          "cost": "100",
+          "description": "disparo de email",
+          "id": "60c8f9c2-519b-4cd8-82c6-fc1558f3398b"
         },
         {
-          "id": "fea6bf6d-cf91-4c88-be5d-b2136f0e7c2e"
-        },
-        {
-          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
-        },
-        {
-          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
-        },
-        {
-          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
-        },
-        {
-          "id": "02f354b3-be1d-45f2-945a-1c0a32859278"
-        },
-        {
-          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
-        },
-        {
-          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
-        },
-        {
-          "id": "34788d5a-b1be-42fe-8375-fdd8ad4011ba"
-        },
-        {
-          "id": "a483cd48-9577-4ae9-8e4a-2079271a0048"
-        },
-        {
-          "id": "37fe3a61-e42b-471d-a014-571d9f7bec78"
-        },
-        {
-          "id": "1cd5e13a-a5fe-467f-abc5-a43a3544342e"
+          "name": "Programador PHP",
+          "cost": "500",
+          "description": "Disparar emails para os clientes do portal",
+          "id": "20d026a4-1ec9-4b95-8746-5cecfcc52cd0"
         }
       ],
       "id": 1
     },
     {
-      "name": "Rotary Club",
-      "budget": "30.000",
+      "name": "App do Iphone",
+      "budget": "31000",
       "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
+        "id": "4",
+        "name": "Planejamento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 31000,
+      "services": [
+        {
+          "name": "Programador Full Stack",
+          "cost": "1000",
+          "description": "Fazer deploy na Apple Store",
+          "id": "12726743-8793-4512-87d1-b63235bbf9b8"
+        },
+        {
+          "name": "Designer",
+          "cost": "2500",
+          "description": "Criação de layout",
+          "id": "74a3f3b0-c9df-4c62-8182-654f6ec98b37"
+        },
+        {
+          "name": "Gerente de projetos",
+          "cost": "26500",
+          "description": "Gerenciar squad",
+          "id": "c40c3214-bf32-4234-8255-797162477d49"
+        },
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste",
+          "id": "0c260bef-04ab-4ba9-853a-52cade86ee1c"
+        }
+      ],
       "id": 2
     },
     {
-      "name": "Club Vela",
-      "budget": "22.000",
+      "name": "Jogo do mario",
+      "budget": "2000",
       "category": {
         "id": "1",
         "name": "Infra"

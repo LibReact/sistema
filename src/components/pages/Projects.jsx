@@ -30,7 +30,7 @@ export default function Projects() {
                 // A resposta do GET é convertida para JSON
             }).then((resp) => resp.json())
                 .then((data) => {
-                    console.log(data);
+                    //console.log(data);
                     setRemoveLoading(true);
                     // Seta os projetos em json no array vazio do useState.
                     setProjects(data);
