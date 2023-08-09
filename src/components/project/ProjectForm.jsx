@@ -16,7 +16,7 @@ export default function ProjectForm({ handleSubmit, btnText, projectData }) {
     // useEffect - diz ao React que seu componente precisa fazer algo após a renderização.
     useEffect(() => {
         // 2º A promisse faz um request na API
-        fetch("https://jsonapi-nu.vercel.app/categories", {
+        fetch("http://localhost:5000/categories", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',

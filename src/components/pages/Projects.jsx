@@ -22,7 +22,7 @@ export default function Projects() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('https://jsonapi-nu.vercel.app/projects', {
+            fetch('http://localhost:5000/projects', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,20 +41,20 @@ export default function Projects() {
 
     function removeProject(id) {
 
-        fetch(`https://jsonapi-nu.vercel.app/projects/${id}`, {
+        fetch(`http://localhost:5000/projects/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
-        }).then(resp => resp.json())
-            .then(data => {
+        }).then((resp) => resp.json())
+            .then((data) => {
                 // percorre cada projeto de dentro do array com o filter e DELETA o project pelo id passado na url da API de projetos.
                 setProjects(projects.filter((project) => project.id !== id))
 
                 // message
                 setProjectMessage('Projeto removido com sucesso!')
             })
-            .catch(err => console.log(err))
+
     }
 
 

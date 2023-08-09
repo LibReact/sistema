@@ -12,7 +12,7 @@ export default function NewProject() {
         project.cost = 0
         project.services = []
 
-        fetch("https://jsonapi-nu.vercel.app/projects", {
+        fetch("http://localhost:5000/projects", {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -24,7 +24,7 @@ export default function NewProject() {
                 // redirect
                 navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
 
     return (
