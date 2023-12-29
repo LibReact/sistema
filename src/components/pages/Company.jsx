@@ -17,10 +17,10 @@ import styles from './Company.module.css'
 export default function Company() {
     const [slidePerView, setSlidePerView] = useState(2)
     const data = [
-        { id: '1', image: 'https://placehold.co/650x400' },
-        { id: '2', image: 'https://placehold.co/650x400' },
-        { id: '3', image: 'https://placehold.co/650x400' },
-        { id: '4', image: 'https://placehold.co/650x400' }
+        { id: '1', image: 'https://images.pexels.com/photos/8548197/pexels-photo-8548197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        { id: '2', image: 'https://images.pexels.com/photos/15991570/pexels-photo-15991570/free-photo-of-a-tall-building-with-a-green-roof-and-a-clock-tower.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        { id: '3', image: 'https://images.pexels.com/photos/7523831/pexels-photo-7523831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' },
+        { id: '4', image: 'https://images.pexels.com/photos/17483921/pexels-photo-17483921/free-photo-of-silos-behind-barbed-wire-in-town.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }
     ]
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function Company() {
             if (window.innerWidth < 720) {
                 setSlidePerView(1);
             } else {
-                setSlidePerView(2)
+                setSlidePerView(4)
             }
         }
 
@@ -45,10 +45,12 @@ export default function Company() {
 
     return (
         <>
+            <h2 className={styles.company_galeria}>Galeria</h2>
+            <p className={styles.company_galeria_desc}>Nossa empresa tem a missão de melhorar a vida das pessoas com a tecnologia.</p>
             <Swiper className={styles.company_slider}
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 slidesPerView={slidePerView}
-                navigation
+                //navigation
                 pagination={{ clickable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
@@ -64,7 +66,7 @@ export default function Company() {
                     ))
                 }
             </Swiper>
-            <h2 className={styles.company_galeria}>Galeria</h2>
+
 
         </>
     )

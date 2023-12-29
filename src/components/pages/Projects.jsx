@@ -22,7 +22,7 @@ export default function Projects() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:5000/projects', {
+            fetch('https://jsonapi-nu.vercel.app/projects', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function Projects() {
 
     function removeProject(id) {
 
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`https://jsonapi-nu.vercel.app/projects/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,11 +58,26 @@ export default function Projects() {
     }
 
 
+    // Evento do submit do form de busca
+    //const submit = (e) => {
+    // e.preventDefault()
+
+    //alert('busca');
+    //handleSubmit(project)
+    //}
+
+    //const [busca, setBusca] = useState('');
+    //const results = projects.filter(function (obj) { return obj.name == busca; });
+
     return (
         <div className={styles.project_container}>
             <div className={styles.title_container}>
                 <h1>Meus Projetos</h1>
                 <LinkButton to="/newproject" text="Criar Projeto" />
+                {/* <form onSubmit={submit}>
+                    <input type="text" name="name" placeholder="Buscar projeto" onChange={(e) => setBusca(e.target.value)} value={busca} />
+                    <input type="submit" value="Buscar" />
+                </form> */}
             </div>
             {
                 // Flash menssages
@@ -73,13 +88,23 @@ export default function Projects() {
             {projectMessage && <Message type="success" msg={projectMessage} />}
 
             <Container customClass="start">
-                {projects.length > 0 && projects.map((project) => (
-                    <ProjectCard id={project.id} name={project.name} budget={project.budget} category={project.category.name} key={project.id} handleRemove={removeProject} />
-                ))}
+
+
+                {
+
+                    projects.length > 0 && projects.map((project) => (
+                        <ProjectCard id={project.id} name={project.name} budget={project.budget} category={project.category.name} key={project.id} handleRemove={removeProject} />
+                    ))
+
+                }
+
+
+
                 {!removeLoading && <Loading />}
                 {removeLoading && projects.length === 0 && (
                     <p>Não há projetos cadastrados!</p>
                 )}
+
             </Container>
         </div>
     )

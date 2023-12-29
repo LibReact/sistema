@@ -18,8 +18,15 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 333,
+      "services": [
+        {
+          "name": "aaa",
+          "cost": "333",
+          "description": "tees",
+          "id": "1c9c9ac0-c8aa-4d55-8aa0-852dcec1d8a4"
+        }
+      ],
       "id": 2
     },
     {
@@ -43,6 +50,28 @@
       "cost": 0,
       "services": [],
       "id": 4
+    },
+    {
+      "name": "teste",
+      "budget": "222",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 5
+    },
+    {
+      "name": "tee",
+      "budget": "2222",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 6
     }
   ],
   "categories": [

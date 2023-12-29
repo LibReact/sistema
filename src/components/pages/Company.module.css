@@ -70,6 +70,15 @@
 
 .company_galeria {
     width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+.company_galeria_desc {
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
 }
 
 .company_slider {
@@ -80,4 +89,8 @@
 
 .slide_item {
     height: 100%;
+}
+
+.swiper-pagination {
+    margin-top: 60px !important;
 }

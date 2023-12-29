@@ -7,12 +7,12 @@ export default function NewProject() {
     const navigate = useNavigate() // permite fazer redirecionar para algum página
 
     function createPost(project) {
-
+        //console.log(project)
         //initialize cost and services
         project.cost = 0
         project.services = []
 
-        fetch("http://localhost:5000/projects", {
+        fetch("https://jsonapi-nu.vercel.app/projects", {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
